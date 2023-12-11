@@ -18,6 +18,7 @@ namespace group_project
 {
     public partial class Form1 : Form
     {
+        private bool sortByName = false;
         public Form1()
         {
             InitializeComponent();
@@ -139,6 +140,27 @@ namespace group_project
                     }
                     CloseConnection();
                 }
+            }
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            TabControl.SelectedTab = Remove;
+        }
+
+        private void Order_Click(object sender, EventArgs e)
+        {
+            if (sortByName == false)
+            {
+                Order.Text = "Order by Client ID";
+                sortByName = true;
+                //sort changing code here
+            }
+            else
+            {
+                Order.Text = "Order by Name";
+                sortByName= false;
+                //sort changing code here
             }
         }
     }
