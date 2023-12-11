@@ -164,7 +164,7 @@ namespace group_project
             }
         }
 
-        private void Submit_Click(object sender, EventArgs e)
+        private void Submit_Click_1(object sender, EventArgs e)
         {
             if(Check_Boxes() && Check_Textboxes())
             {

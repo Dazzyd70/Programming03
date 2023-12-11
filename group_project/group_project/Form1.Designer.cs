@@ -270,8 +270,9 @@
             this.Result_Output_label.AutoSize = true;
             this.Result_Output_label.Location = new System.Drawing.Point(603, 453);
             this.Result_Output_label.Name = "Result_Output_label";
-            this.Result_Output_label.Size = new System.Drawing.Size(0, 13);
+            this.Result_Output_label.Size = new System.Drawing.Size(104, 13);
             this.Result_Output_label.TabIndex = 32;
+            this.Result_Output_label.Text = "Fill out form to begin!";
             // 
             // label1
             // 
@@ -290,6 +291,7 @@
             this.Submit.TabIndex = 30;
             this.Submit.Text = "Register New Client";
             this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click_1);
             // 
             // LastName_textbox
             // 
