@@ -38,6 +38,11 @@
             this.Delete = new System.Windows.Forms.Button();
             this.Button1 = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.TabPage();
+            this.Result_Output_label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Submit = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -59,15 +64,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.Submit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Result_Output_label = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.Remove.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Home.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Add.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -82,12 +90,18 @@
             // 
             // Remove
             // 
+            this.Remove.Controls.Add(this.button4);
+            this.Remove.Controls.Add(this.button3);
+            this.Remove.Controls.Add(this.button2);
+            this.Remove.Controls.Add(this.dataGridView2);
+            this.Remove.Controls.Add(this.textBox8);
+            this.Remove.Controls.Add(this.textBox7);
             this.Remove.Location = new System.Drawing.Point(4, 22);
             this.Remove.Name = "Remove";
             this.Remove.Padding = new System.Windows.Forms.Padding(3);
             this.Remove.Size = new System.Drawing.Size(1116, 571);
             this.Remove.TabIndex = 2;
-            this.Remove.Text = "Remove";
+            this.Remove.Text = "Search";
             this.Remove.UseVisualStyleBackColor = true;
             // 
             // TabControl
@@ -199,6 +213,48 @@
             this.Add.TabIndex = 1;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
+            // 
+            // Result_Output_label
+            // 
+            this.Result_Output_label.AutoSize = true;
+            this.Result_Output_label.Location = new System.Drawing.Point(603, 453);
+            this.Result_Output_label.Name = "Result_Output_label";
+            this.Result_Output_label.Size = new System.Drawing.Size(0, 13);
+            this.Result_Output_label.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(556, 452);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Result:";
+            // 
+            // Submit
+            // 
+            this.Submit.Location = new System.Drawing.Point(25, 422);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(308, 73);
+            this.Submit.TabIndex = 30;
+            this.Submit.Text = "Register New Client";
+            this.Submit.UseVisualStyleBackColor = true;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(245, 86);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(169, 20);
+            this.textBox6.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(25, 328);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 13);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Selected Products";
             // 
             // textBox5
             // 
@@ -372,47 +428,56 @@
             this.label7.Size = new System.Drawing.Size(100, 23);
             this.label7.TabIndex = 17;
             // 
-            // label13
+            // textBox7
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(25, 328);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 13);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Selected Products";
+            this.textBox7.Location = new System.Drawing.Point(130, 31);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(272, 20);
+            this.textBox7.TabIndex = 0;
             // 
-            // textBox6
+            // textBox8
             // 
-            this.textBox6.Location = new System.Drawing.Point(245, 86);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(169, 20);
-            this.textBox6.TabIndex = 29;
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Location = new System.Drawing.Point(56, 34);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(68, 13);
+            this.textBox8.TabIndex = 1;
+            this.textBox8.Text = "Input Client ID";
             // 
-            // Submit
+            // dataGridView2
             // 
-            this.Submit.Location = new System.Drawing.Point(25, 422);
-            this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(308, 73);
-            this.Submit.TabIndex = 30;
-            this.Submit.Text = "Register New Client";
-            this.Submit.UseVisualStyleBackColor = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(68, 65);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(980, 380);
+            this.dataGridView2.TabIndex = 39;
             // 
-            // label1
+            // button2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(556, 452);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Result:";
+            this.button2.Location = new System.Drawing.Point(68, 463);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(226, 76);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Print Record";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // Result_Output_label
+            // button3
             // 
-            this.Result_Output_label.AutoSize = true;
-            this.Result_Output_label.Location = new System.Drawing.Point(603, 453);
-            this.Result_Output_label.Name = "Result_Output_label";
-            this.Result_Output_label.Size = new System.Drawing.Size(0, 13);
-            this.Result_Output_label.TabIndex = 32;
+            this.button3.Location = new System.Drawing.Point(532, 463);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(226, 76);
+            this.button3.TabIndex = 41;
+            this.button3.Text = "Cancel Search";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(300, 463);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(226, 76);
+            this.button4.TabIndex = 42;
+            this.button4.Text = "Delete Record ";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -422,11 +487,14 @@
             this.Controls.Add(this.TabControl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Remove.ResumeLayout(false);
+            this.Remove.PerformLayout();
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Add.ResumeLayout(false);
             this.Add.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -469,6 +537,12 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label Result_Output_label;
         private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.Button button4;
+        internal System.Windows.Forms.Button button3;
+        internal System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 
