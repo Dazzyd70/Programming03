@@ -32,15 +32,15 @@
             this.Remove = new System.Windows.Forms.TabPage();
             this.Add = new System.Windows.Forms.TabPage();
             this.TabControl = new System.Windows.Forms.TabControl();
-            this.Button1 = new System.Windows.Forms.Button();
-            this.Insert = new System.Windows.Forms.Button();
-            this.Delete = new System.Windows.Forms.Button();
-            this.Search = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Home = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Save = new System.Windows.Forms.Button();
+            this.Order = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
+            this.Button1 = new System.Windows.Forms.Button();
             this.TabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Home.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -85,6 +85,56 @@
             this.TabControl.Size = new System.Drawing.Size(1124, 597);
             this.TabControl.TabIndex = 0;
             // 
+            // Home
+            // 
+            this.Home.Controls.Add(this.dataGridView1);
+            this.Home.Controls.Add(this.Save);
+            this.Home.Controls.Add(this.Order);
+            this.Home.Controls.Add(this.Delete);
+            this.Home.Controls.Add(this.Button1);
+            this.Home.Location = new System.Drawing.Point(4, 22);
+            this.Home.Name = "Home";
+            this.Home.Padding = new System.Windows.Forms.Padding(3);
+            this.Home.Size = new System.Drawing.Size(1116, 571);
+            this.Home.TabIndex = 0;
+            this.Home.Text = "Home";
+            this.Home.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(73, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(980, 380);
+            this.dataGridView1.TabIndex = 38;
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(825, 452);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(228, 75);
+            this.Save.TabIndex = 29;
+            this.Save.Text = "Save to File";
+            this.Save.UseVisualStyleBackColor = true;
+            // 
+            // Order
+            // 
+            this.Order.Location = new System.Drawing.Point(565, 452);
+            this.Order.Name = "Order";
+            this.Order.Size = new System.Drawing.Size(254, 76);
+            this.Order.TabIndex = 28;
+            this.Order.Text = "Order by Name";
+            this.Order.UseVisualStyleBackColor = true;
+            // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(305, 452);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(254, 76);
+            this.Delete.TabIndex = 27;
+            this.Delete.Text = "Remove Record";
+            this.Delete.UseVisualStyleBackColor = true;
+            // 
             // Button1
             // 
             this.Button1.Location = new System.Drawing.Point(73, 452);
@@ -95,56 +145,6 @@
             this.Button1.UseVisualStyleBackColor = true;
             this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // Insert
-            // 
-            this.Insert.Location = new System.Drawing.Point(305, 452);
-            this.Insert.Name = "Insert";
-            this.Insert.Size = new System.Drawing.Size(254, 76);
-            this.Insert.TabIndex = 27;
-            this.Insert.Text = "Remove Record";
-            this.Insert.UseVisualStyleBackColor = true;
-            // 
-            // Delete
-            // 
-            this.Delete.Location = new System.Drawing.Point(565, 452);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(254, 76);
-            this.Delete.TabIndex = 28;
-            this.Delete.Text = "Order by Name";
-            this.Delete.UseVisualStyleBackColor = true;
-            // 
-            // Search
-            // 
-            this.Search.Location = new System.Drawing.Point(825, 452);
-            this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(228, 75);
-            this.Search.TabIndex = 29;
-            this.Search.Text = "Save to File";
-            this.Search.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(73, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(980, 380);
-            this.dataGridView1.TabIndex = 38;
-            // 
-            // Home
-            // 
-            this.Home.Controls.Add(this.dataGridView1);
-            this.Home.Controls.Add(this.Search);
-            this.Home.Controls.Add(this.Delete);
-            this.Home.Controls.Add(this.Insert);
-            this.Home.Controls.Add(this.Button1);
-            this.Home.Location = new System.Drawing.Point(4, 22);
-            this.Home.Name = "Home";
-            this.Home.Padding = new System.Windows.Forms.Padding(3);
-            this.Home.Size = new System.Drawing.Size(1116, 571);
-            this.Home.TabIndex = 0;
-            this.Home.Text = "Home";
-            this.Home.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,8 +154,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.TabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Home.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -168,9 +168,9 @@
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Home;
         private System.Windows.Forms.DataGridView dataGridView1;
-        internal System.Windows.Forms.Button Search;
+        internal System.Windows.Forms.Button Save;
+        internal System.Windows.Forms.Button Order;
         internal System.Windows.Forms.Button Delete;
-        internal System.Windows.Forms.Button Insert;
         internal System.Windows.Forms.Button Button1;
     }
 }
