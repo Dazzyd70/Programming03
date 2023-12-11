@@ -30,6 +30,12 @@
         {
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.Remove = new System.Windows.Forms.TabPage();
+            this.deleteSearch = new System.Windows.Forms.Button();
+            this.cancelSearch = new System.Windows.Forms.Button();
+            this.printSearch = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.clientSearch = new System.Windows.Forms.TextBox();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Home = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -68,7 +74,6 @@
             this.Home.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Add.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -83,12 +88,12 @@
             // 
             // Remove
             // 
-            this.Remove.Controls.Add(this.button4);
-            this.Remove.Controls.Add(this.button3);
-            this.Remove.Controls.Add(this.button2);
+            this.Remove.Controls.Add(this.deleteSearch);
+            this.Remove.Controls.Add(this.cancelSearch);
+            this.Remove.Controls.Add(this.printSearch);
             this.Remove.Controls.Add(this.dataGridView2);
             this.Remove.Controls.Add(this.textBox8);
-            this.Remove.Controls.Add(this.textBox7);
+            this.Remove.Controls.Add(this.clientSearch);
             this.Remove.Location = new System.Drawing.Point(4, 22);
             this.Remove.Name = "Remove";
             this.Remove.Padding = new System.Windows.Forms.Padding(3);
@@ -96,6 +101,57 @@
             this.Remove.TabIndex = 2;
             this.Remove.Text = "Search";
             this.Remove.UseVisualStyleBackColor = true;
+            // 
+            // deleteSearch
+            // 
+            this.deleteSearch.Location = new System.Drawing.Point(300, 463);
+            this.deleteSearch.Name = "deleteSearch";
+            this.deleteSearch.Size = new System.Drawing.Size(226, 76);
+            this.deleteSearch.TabIndex = 42;
+            this.deleteSearch.Text = "Delete Record ";
+            this.deleteSearch.UseVisualStyleBackColor = true;
+            // 
+            // cancelSearch
+            // 
+            this.cancelSearch.Location = new System.Drawing.Point(532, 463);
+            this.cancelSearch.Name = "cancelSearch";
+            this.cancelSearch.Size = new System.Drawing.Size(226, 76);
+            this.cancelSearch.TabIndex = 41;
+            this.cancelSearch.Text = "Cancel Search";
+            this.cancelSearch.UseVisualStyleBackColor = true;
+            // 
+            // printSearch
+            // 
+            this.printSearch.Location = new System.Drawing.Point(68, 463);
+            this.printSearch.Name = "printSearch";
+            this.printSearch.Size = new System.Drawing.Size(226, 76);
+            this.printSearch.TabIndex = 40;
+            this.printSearch.Text = "Print Record";
+            this.printSearch.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(68, 65);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(980, 380);
+            this.dataGridView2.TabIndex = 39;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Location = new System.Drawing.Point(56, 34);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(68, 13);
+            this.textBox8.TabIndex = 1;
+            this.textBox8.Text = "Input Client ID";
+            // 
+            // clientSearch
+            // 
+            this.clientSearch.Location = new System.Drawing.Point(130, 31);
+            this.clientSearch.Name = "clientSearch";
+            this.clientSearch.Size = new System.Drawing.Size(272, 20);
+            this.clientSearch.TabIndex = 0;
             // 
             // TabControl
             // 
@@ -431,12 +487,12 @@
             this.Text = "Form1";
             this.Remove.ResumeLayout(false);
             this.Remove.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.TabControl.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Add.ResumeLayout(false);
             this.Add.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -479,12 +535,12 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label Result_Output_label;
         private System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.Button button4;
-        internal System.Windows.Forms.Button button3;
-        internal System.Windows.Forms.Button button2;
+        internal System.Windows.Forms.Button deleteSearch;
+        internal System.Windows.Forms.Button cancelSearch;
+        internal System.Windows.Forms.Button printSearch;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox clientSearch;
     }
 }
 
