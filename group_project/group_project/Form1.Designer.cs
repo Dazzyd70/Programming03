@@ -54,7 +54,7 @@
             this.Email_textbox = new System.Windows.Forms.TextBox();
             this.FirstName_textbox = new System.Windows.Forms.TextBox();
             this.ID_textbox = new System.Windows.Forms.TextBox();
-            this.Accessories_label = new System.Windows.Forms.CheckBox();
+            this.Accessories_checkbox = new System.Windows.Forms.CheckBox();
             this.Office_checkbox = new System.Windows.Forms.CheckBox();
             this.Games_checkbox = new System.Windows.Forms.CheckBox();
             this.Hardward_checkbox = new System.Windows.Forms.CheckBox();
@@ -241,7 +241,7 @@
             this.Add.Controls.Add(this.Email_textbox);
             this.Add.Controls.Add(this.FirstName_textbox);
             this.Add.Controls.Add(this.ID_textbox);
-            this.Add.Controls.Add(this.Accessories_label);
+            this.Add.Controls.Add(this.Accessories_checkbox);
             this.Add.Controls.Add(this.Office_checkbox);
             this.Add.Controls.Add(this.Games_checkbox);
             this.Add.Controls.Add(this.Hardward_checkbox);
@@ -342,15 +342,15 @@
             this.ID_textbox.Size = new System.Drawing.Size(139, 20);
             this.ID_textbox.TabIndex = 22;
             // 
-            // Accessories_label
+            // Accessories_checkbox
             // 
-            this.Accessories_label.AutoSize = true;
-            this.Accessories_label.Location = new System.Drawing.Point(537, 377);
-            this.Accessories_label.Name = "Accessories_label";
-            this.Accessories_label.Size = new System.Drawing.Size(83, 17);
-            this.Accessories_label.TabIndex = 21;
-            this.Accessories_label.Text = "Accessories";
-            this.Accessories_label.UseVisualStyleBackColor = true;
+            this.Accessories_checkbox.AutoSize = true;
+            this.Accessories_checkbox.Location = new System.Drawing.Point(537, 377);
+            this.Accessories_checkbox.Name = "Accessories_checkbox";
+            this.Accessories_checkbox.Size = new System.Drawing.Size(83, 17);
+            this.Accessories_checkbox.TabIndex = 21;
+            this.Accessories_checkbox.Text = "Accessories";
+            this.Accessories_checkbox.UseVisualStyleBackColor = true;
             // 
             // Office_checkbox
             // 
@@ -523,7 +523,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox Accessories_label;
+        private System.Windows.Forms.CheckBox Accessories_checkbox;
         private System.Windows.Forms.CheckBox Office_checkbox;
         private System.Windows.Forms.CheckBox Games_checkbox;
         private System.Windows.Forms.CheckBox Hardward_checkbox;
