@@ -176,14 +176,14 @@
             this.Add.Controls.Add(this.Result_Output_label);
             this.Add.Controls.Add(this.label1);
             this.Add.Controls.Add(this.Submit);
-            this.Add.Controls.Add(this.LastName_textbox);
+            this.Add.Controls.Add(this.textBox6);
             this.Add.Controls.Add(this.label13);
-            this.Add.Controls.Add(this.Address_textbox);
-            this.Add.Controls.Add(this.Phone_textbox);
-            this.Add.Controls.Add(this.Email_textbox);
-            this.Add.Controls.Add(this.FirstName_textbox);
-            this.Add.Controls.Add(this.ID_textbox);
-            this.Add.Controls.Add(this.Accessories_checkbox);
+            this.Add.Controls.Add(this.textBox5);
+            this.Add.Controls.Add(this.textBox4);
+            this.Add.Controls.Add(this.textBox3);
+            this.Add.Controls.Add(this.textBox2);
+            this.Add.Controls.Add(this.textBox1);
+            this.Add.Controls.Add(this.Accessories_label);
             this.Add.Controls.Add(this.Office_checkbox);
             this.Add.Controls.Add(this.Games_checkbox);
             this.Add.Controls.Add(this.Hardward_checkbox);
@@ -209,92 +209,48 @@
             // 
             // textBox5
             // 
-            this.Result_Output_label.AutoSize = true;
-            this.Result_Output_label.Location = new System.Drawing.Point(603, 453);
-            this.Result_Output_label.Name = "Result_Output_label";
-            this.Result_Output_label.Size = new System.Drawing.Size(0, 13);
-            this.Result_Output_label.TabIndex = 32;
+            this.textBox5.Location = new System.Drawing.Point(89, 273);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(595, 20);
+            this.textBox5.TabIndex = 26;
             // 
-            // label1
+            // textBox4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(556, 452);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Result:";
+            this.textBox4.Location = new System.Drawing.Point(89, 210);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(139, 20);
+            this.textBox4.TabIndex = 25;
             // 
-            // Submit
+            // textBox3
             // 
-            this.Submit.Location = new System.Drawing.Point(25, 422);
-            this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(308, 73);
-            this.Submit.TabIndex = 30;
-            this.Submit.Text = "Register New Client";
-            this.Submit.UseVisualStyleBackColor = true;
-            this.Submit.Click += new System.EventHandler(this.Submit_Click);
+            this.textBox3.Location = new System.Drawing.Point(89, 146);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(139, 20);
+            this.textBox3.TabIndex = 24;
             // 
-            // LastName_textbox
+            // textBox2
             // 
-            this.LastName_textbox.Location = new System.Drawing.Point(245, 86);
-            this.LastName_textbox.Name = "LastName_textbox";
-            this.LastName_textbox.Size = new System.Drawing.Size(169, 20);
-            this.LastName_textbox.TabIndex = 29;
+            this.textBox2.Location = new System.Drawing.Point(89, 86);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(139, 20);
+            this.textBox2.TabIndex = 23;
             // 
-            // label13
+            // textBox1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(25, 328);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 13);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Selected Products";
+            this.textBox1.Location = new System.Drawing.Point(89, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(139, 20);
+            this.textBox1.TabIndex = 22;
             // 
-            // Address_textbox
+            // Accessories_label
             // 
-            this.Address_textbox.Location = new System.Drawing.Point(89, 273);
-            this.Address_textbox.Name = "Address_textbox";
-            this.Address_textbox.Size = new System.Drawing.Size(595, 20);
-            this.Address_textbox.TabIndex = 26;
-            // 
-            // Phone_textbox
-            // 
-            this.Phone_textbox.Location = new System.Drawing.Point(89, 210);
-            this.Phone_textbox.Name = "Phone_textbox";
-            this.Phone_textbox.Size = new System.Drawing.Size(139, 20);
-            this.Phone_textbox.TabIndex = 25;
-            // 
-            // Email_textbox
-            // 
-            this.Email_textbox.Location = new System.Drawing.Point(89, 146);
-            this.Email_textbox.Name = "Email_textbox";
-            this.Email_textbox.Size = new System.Drawing.Size(139, 20);
-            this.Email_textbox.TabIndex = 24;
-            // 
-            // FirstName_textbox
-            // 
-            this.FirstName_textbox.Location = new System.Drawing.Point(89, 86);
-            this.FirstName_textbox.Name = "FirstName_textbox";
-            this.FirstName_textbox.Size = new System.Drawing.Size(139, 20);
-            this.FirstName_textbox.TabIndex = 23;
-            // 
-            // ID_textbox
-            // 
-            this.ID_textbox.Location = new System.Drawing.Point(89, 27);
-            this.ID_textbox.Name = "ID_textbox";
-            this.ID_textbox.Size = new System.Drawing.Size(139, 20);
-            this.ID_textbox.TabIndex = 22;
-            this.ID_textbox.Text = "fgbsrgn";
-            // 
-            // Accessories_checkbox
-            // 
-            this.Accessories_checkbox.AutoSize = true;
-            this.Accessories_checkbox.Location = new System.Drawing.Point(537, 377);
-            this.Accessories_checkbox.Name = "Accessories_checkbox";
-            this.Accessories_checkbox.Size = new System.Drawing.Size(83, 17);
-            this.Accessories_checkbox.TabIndex = 21;
-            this.Accessories_checkbox.Text = "Accessories";
-            this.Accessories_checkbox.UseVisualStyleBackColor = true;
+            this.Accessories_label.AutoSize = true;
+            this.Accessories_label.Location = new System.Drawing.Point(537, 377);
+            this.Accessories_label.Name = "Accessories_label";
+            this.Accessories_label.Size = new System.Drawing.Size(83, 17);
+            this.Accessories_label.TabIndex = 21;
+            this.Accessories_label.Text = "Accessories";
+            this.Accessories_label.UseVisualStyleBackColor = true;
             // 
             // Office_checkbox
             // 
@@ -509,17 +465,17 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox Accessories_checkbox;
+        private System.Windows.Forms.CheckBox Accessories_label;
         private System.Windows.Forms.CheckBox Office_checkbox;
         private System.Windows.Forms.CheckBox Games_checkbox;
         private System.Windows.Forms.CheckBox Hardward_checkbox;
-        private System.Windows.Forms.TextBox Address_textbox;
-        private System.Windows.Forms.TextBox Phone_textbox;
-        private System.Windows.Forms.TextBox Email_textbox;
-        private System.Windows.Forms.TextBox FirstName_textbox;
-        private System.Windows.Forms.TextBox ID_textbox;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox LastName_textbox;
+        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label Result_Output_label;
         private System.Windows.Forms.Label label1;

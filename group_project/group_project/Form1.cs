@@ -163,42 +163,6 @@ namespace group_project
                 //sort changing code here
             }
         }
-
-        private void Submit_Click(object sender, EventArgs e)
-        {
-            if(Check_Boxes() && Check_Textboxes())
-            { 
-                //Submit
-            }
-            else
-            {
-                Result_Output_label.Text = "Form Incomplete!";
-            }
-        }
-
-        private bool Check_Textboxes()
-        {
-            if (ID_textbox.Text != null && FirstName_textbox.Text != null && LastName_textbox.Text != null &&
-                Phone_textbox.Text != null && Address_textbox.Text != null && Email_textbox.Text != null)
-            {
-                return true;
-            }
-            else 
-            {
-             return false;
-            }
-        }
-        private bool Check_Boxes()
-        {
-            if (Software_checkbox.Checked || Games_checkbox.Checked || Accessories_checkbox.Checked || Hardward_checkbox.Checked || Office_checkbox.Checked)
-            {
-                return true;
-            }
-            else 
-            { 
-                return false;
-            }
-        }
     }
 }
 
