@@ -27,7 +27,7 @@ namespace group_project
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            
+            TabControl.SelectedTab = Add;
         }
         public class MySQLConnector
         {
