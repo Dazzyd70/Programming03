@@ -13,11 +13,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using MySqlX.XDevAPI;
+using System.Collections;
 
 namespace group_project
 {
     public partial class Form1 : Form
     {
+       
         private bool sortByName = false;
         public Form1()
         {
@@ -45,9 +49,9 @@ namespace group_project
             private void Initialize()
             {
                 server = "ysjcs.net"; // Replace with your MySQL server hostname or IP address
-                database = "arronyeoman"; // Replace with your MySQL database name
-                username = "arron.yeoman"; // Replace with your MySQL username
-                password = "B9R5WBJK"; // Replace with your MySQL password
+                database = "jaymenecola_"; // Replace with your MySQL database name
+                username = "jay.menecola"; // Replace with your MySQL username
+                password = "YSYUVJY3"; // Replace with your MySQL password
                 string connectionString = $"Server={server}; Database = {database}; Uid={username}; Pwd={password};";
                 connection = new MySqlConnection(connectionString);
                 Console.WriteLine("Initialised");
@@ -141,6 +145,74 @@ namespace group_project
                     CloseConnection();
                 }
             }
+            public void InsertIntoDatabase(string clientID, string firstName, string lastName, string phoneNumber, string email, string address)
+            {
+                if (OpenConnection())
+                {
+                    string query = "INSERT INTO users (ClientID, FirstName, LastName, PhoneNumber, Email, Address) " +
+                        "VALUES (@clientID, @FirstName, @LastName, @PhoneNumber, @Email, @Address)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        if (int.TryParse(clientID, out int clientIDInt))
+                        {
+                            cmd.Parameters.AddWithValue("@ClientID", clientIDInt);
+                        }
+                        if (int.TryParse(phoneNumber, out int phoneNumberInt))
+                        {
+                            cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumberInt);
+                        }
+
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Address", address);
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Data inserted successfully!");
+
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show($"Error: {ex.Message}");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Not Connected to the Database");
+                }
+            }   
+
+            public void SearchDatabase(string search, DataGridView dataGridView2)
+            {
+                if (OpenConnection())
+                {
+                    string query = "SELECT * FROM users WHERE ClientID = @search";
+                    MySqlParameter[] parameters = { new MySqlParameter("@search", MySqlDbType.Int32) { Value = int.Parse(search) } };
+                    MySQLConnector groupProjectConnect = new MySQLConnector();
+                    DataTable resultTable = groupProjectConnect.ExecuteQuery(query, parameters);
+                    dataGridView2.DataSource = resultTable;
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Not Connected to the Database");
+                }
+            }
+
+            public void DeleteSearchResult(string search)
+            {
+                if (OpenConnection())
+                {
+                    string query = "DELETE FROM users WHERE ClientID = @search";
+                    MySqlParameter[] parameters = { new MySqlParameter("@search", MySqlDbType.Int32) { Value = int.Parse(search) } };
+                    MySQLConnector groupProjectConnect = new MySQLConnector();
+                    groupProjectConnect.ExecuteQuery(query, parameters);
+
+                }
+            }
         }
 
         private void Delete_Click(object sender, EventArgs e)
@@ -163,12 +235,21 @@ namespace group_project
                 //sort changing code here
             }
         }
-
+       
         private void Submit_Click_1(object sender, EventArgs e)
         {
             if(Check_Boxes() && Check_Textboxes())
             {
-                //Submit
+                string clientID = ID_textbox.Text;
+                string firstName = FirstName_textbox.Text;
+                string lastName = LastName_textbox.Text;
+                string phoneNumber = Phone_textbox.Text;
+                string email = Email_textbox.Text;
+                string address = Address_textbox.Text;
+        
+                MySQLConnector database = new MySQLConnector();
+                database.InsertIntoDatabase(clientID, firstName, lastName, phoneNumber, email, address);
+
                 Result_Output_label.Text = "Success!";
             }
             else
@@ -199,6 +280,42 @@ namespace group_project
             { 
                 return false;
             }
+        }
+
+        private void printSearch_Click(object sender, EventArgs e)
+        {
+            if (clientSearch.Text != "")
+            {
+                string search = clientSearch.Text;
+                MySQLConnector database = new MySQLConnector();
+                database.SearchDatabase(search, dataGridView2);
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            MySQLConnector groupProjectConnect = new MySQLConnector();
+            string query = "SELECT * FROM users";
+            dataGridView1.DataSource = groupProjectConnect.ExecuteQuery(query);
+        }
+
+        private void cancelSearch_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = null;
+            clientSearch.Text = null;
+        }
+
+        private void deleteSearch_Click(object sender, EventArgs e)
+        {
+            string search = clientSearch.Text;
+            MySQLConnector database = new MySQLConnector();
+            database.DeleteSearchResult(search);
+            dataGridView2.DataSource = null;
         }
     }
 }

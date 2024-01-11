@@ -70,6 +70,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Refresh = new System.Windows.Forms.Button();
             this.Remove.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.TabControl.SuspendLayout();
@@ -112,6 +113,7 @@
             this.deleteSearch.TabIndex = 42;
             this.deleteSearch.Text = "Delete Record ";
             this.deleteSearch.UseVisualStyleBackColor = true;
+            this.deleteSearch.Click += new System.EventHandler(this.deleteSearch_Click);
             // 
             // cancelSearch
             // 
@@ -121,6 +123,7 @@
             this.cancelSearch.TabIndex = 41;
             this.cancelSearch.Text = "Cancel Search";
             this.cancelSearch.UseVisualStyleBackColor = true;
+            this.cancelSearch.Click += new System.EventHandler(this.cancelSearch_Click);
             // 
             // printSearch
             // 
@@ -130,6 +133,7 @@
             this.printSearch.TabIndex = 40;
             this.printSearch.Text = "Print Record";
             this.printSearch.UseVisualStyleBackColor = true;
+            this.printSearch.Click += new System.EventHandler(this.printSearch_Click);
             // 
             // dataGridView2
             // 
@@ -138,6 +142,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(980, 380);
             this.dataGridView2.TabIndex = 39;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // textBox8
             // 
@@ -169,6 +174,7 @@
             // 
             // Home
             // 
+            this.Home.Controls.Add(this.Refresh);
             this.Home.Controls.Add(this.dataGridView1);
             this.Home.Controls.Add(this.Save);
             this.Home.Controls.Add(this.Order);
@@ -481,6 +487,16 @@
             this.label7.Size = new System.Drawing.Size(100, 23);
             this.label7.TabIndex = 17;
             // 
+            // Refresh
+            // 
+            this.Refresh.Location = new System.Drawing.Point(978, 533);
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(75, 23);
+            this.Refresh.TabIndex = 39;
+            this.Refresh.Text = "Refresh";
+            this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,6 +561,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox clientSearch;
+        private System.Windows.Forms.Button Refresh;
     }
 }
 
