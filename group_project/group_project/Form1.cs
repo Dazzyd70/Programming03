@@ -16,6 +16,8 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using MySqlX.XDevAPI;
 using System.Collections;
+using System.IO;
+using Org.BouncyCastle.Cms;
 
 namespace group_project
 {
@@ -213,8 +215,42 @@ namespace group_project
 
                 }
             }
-        }
 
+            public void SaveToCSV(string fileName)
+            {
+                if (OpenConnection())
+                {
+                    string query = "SELECT * FROM users";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection)) 
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            StringBuilder sb = new StringBuilder();
+
+                            for(int i = 0; i < reader.FieldCount; i++)
+                            {
+                                sb.Append(reader.GetName(i));
+                                sb.Append(i == reader.FieldCount - 1 ? "\n" : ",");
+                            }
+                            // rows
+                            while (reader.Read())
+                            {
+                                for(int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    sb.Append(reader[i]);
+                                    sb.Append(i == reader.FieldCount - 1 ? "\n" : ","); 
+                                }
+                            }
+
+                            File.WriteAllText(fileName, sb.ToString());
+                        }    
+                    }
+                }
+            }
+        }
+        
+          
+        
         private void Delete_Click(object sender, EventArgs e)
         {
             TabControl.SelectedTab = Remove;
@@ -226,13 +262,18 @@ namespace group_project
             {
                 Order.Text = "Order by Client ID";
                 sortByName = true;
-                //sort changing code here
+                MySQLConnector database = new MySQLConnector();
+                string query = "SELECT * FROM users ORDER BY FirstName";
+                dataGridView1.DataSource = database.ExecuteQuery(query);
+
             }
             else
             {
                 Order.Text = "Order by Name";
                 sortByName= false;
-                //sort changing code here
+                MySQLConnector database = new MySQLConnector();
+                string query = "SELECT * FROM users ORDER BY ClientID";
+                dataGridView1.DataSource = database.ExecuteQuery(query);
             }
         }
        
@@ -257,31 +298,6 @@ namespace group_project
                 Result_Output_label.Text = "Form Incomplete!";
             }
         }
-
-        private bool Check_Textboxes()
-        {
-            if (ID_textbox.Text != null && FirstName_textbox.Text != null && LastName_textbox.Text != null &&
-                Phone_textbox.Text != null && Address_textbox.Text != null && Email_textbox.Text != null)
-            {
-                return true;
-            }
-            else 
-            {
-             return false;
-            }
-        }
-        private bool Check_Boxes()
-        {
-            if (Software_checkbox.Checked || Games_checkbox.Checked || Accessories_checkbox.Checked || Hardward_checkbox.Checked || Office_checkbox.Checked)
-            {
-                return true;
-            }
-            else 
-            { 
-                return false;
-            }
-        }
-
         private void printSearch_Click(object sender, EventArgs e)
         {
             if (clientSearch.Text != "")
@@ -317,6 +333,46 @@ namespace group_project
             database.DeleteSearchResult(search);
             dataGridView2.DataSource = null;
         }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            saveFileDialog1.Title = "Save CSV File";
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog1.FileName;
+                MySQLConnector database = new MySQLConnector();
+                database.SaveToCSV(saveFileDialog1.FileName);
+            }
+        }
+
+
+        private bool Check_Textboxes()
+        {
+            if (ID_textbox.Text != null && FirstName_textbox.Text != null && LastName_textbox.Text != null &&
+                Phone_textbox.Text != null && Address_textbox.Text != null && Email_textbox.Text != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool Check_Boxes()
+        {
+            if (Software_checkbox.Checked || Games_checkbox.Checked || Accessories_checkbox.Checked || Hardward_checkbox.Checked || Office_checkbox.Checked)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
 
