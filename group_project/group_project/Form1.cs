@@ -208,6 +208,10 @@ namespace group_project
                     groupProjectConnect.ExecuteQuery(query, parameters);
 
                 }
+                else
+                {
+                    MessageBox.Show("Not Connected to the Database");
+                }
             }
 
             public void SaveToCSV(string fileName)
