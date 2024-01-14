@@ -148,12 +148,13 @@ namespace group_project
                     CloseConnection();
                 }
             }
-            public void InsertIntoDatabase(string clientID, string firstName, string lastName, string phoneNumber, string email, string address)
+            public void InsertIntoDatabase(string clientID, string firstName, string lastName, string phoneNumber, string email, string address,
+               bool softwareCheck, bool hardwareCheck, bool gamesCheck, bool officeCheck, bool accessoriesCheck)
             {
                 if (OpenConnection())
                 {
-                    string query = "INSERT INTO users (ClientID, FirstName, LastName, PhoneNumber, Email, Address) " +
-                        "VALUES (@clientID, @FirstName, @LastName, @PhoneNumber, @Email, @Address)";
+                    string query = "INSERT INTO users (ClientID, FirstName, LastName, PhoneNumber, Email, Address, Software, LaptopsAndPC, Games, OfficeTools, Accessories) " +
+                        "VALUES (@clientID, @FirstName, @LastName, @PhoneNumber, @Email, @Address, @Software, @LaptopsAndPC, @Games, @OfficeTools, @Accessories)";
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@ClientID", clientID); 
@@ -162,6 +163,12 @@ namespace group_project
                         cmd.Parameters.AddWithValue("@LastName", lastName);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Address", address);
+                        cmd.Parameters.AddWithValue("@Software", softwareCheck);
+                        cmd.Parameters.AddWithValue("@LaptopsAndPC", hardwareCheck);
+                        cmd.Parameters.AddWithValue("@Games", gamesCheck);
+                        cmd.Parameters.AddWithValue("@OfficeTools", officeCheck);
+                        cmd.Parameters.AddWithValue("@Accessories", accessoriesCheck);
+
                         
                         try
                         {
@@ -344,10 +351,15 @@ namespace group_project
                     return;
                 }
 
+                bool softwareCheck = Software_checkbox.Checked;
+                bool hardwareCheck = Hardware_checkbox.Checked;
+                bool gamesCheck = Games_checkbox.Checked;
+                bool officeCheck = Office_checkbox.Checked;
+                bool accessoriesCheck = Accessories_checkbox.Checked;
 
                 //submit to the database
                 MySQLConnector database = new MySQLConnector();
-                database.InsertIntoDatabase(clientID, firstName, lastName, phoneNumber, email, address);
+                database.InsertIntoDatabase(clientID, firstName, lastName, phoneNumber, email, address, softwareCheck, hardwareCheck, gamesCheck, officeCheck, accessoriesCheck);
                 //empty all text-boxes
                 ID_textbox.Text = FirstName_textbox.Text = LastName_textbox.Text = Phone_textbox.Text = Email_textbox.Text = Address_textbox.Text = "";
                 Result_Output_label.Text = "Success!";
@@ -371,11 +383,6 @@ namespace group_project
                 MySQLConnector database = new MySQLConnector();
                 database.SearchDatabase(search, dataGridView2);
             }
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void Refresh_Click(object sender, EventArgs e)
@@ -428,7 +435,7 @@ namespace group_project
         }
         private bool Check_Boxes()
         {
-            if (Software_checkbox.Checked || Games_checkbox.Checked || Accessories_checkbox.Checked || Hardward_checkbox.Checked || Office_checkbox.Checked)
+            if (Software_checkbox.Checked || Games_checkbox.Checked || Accessories_checkbox.Checked || Hardware_checkbox.Checked || Office_checkbox.Checked)
             {
                 return true;
             }
