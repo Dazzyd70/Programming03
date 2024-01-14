@@ -279,15 +279,17 @@ namespace group_project
        
         private void Submit_Click_1(object sender, EventArgs e)
         {
+            //performs a check to see if all fields have been populated
             if(Check_Boxes() && Check_Textboxes())
             {
+                //store all entered data as strings
                 string clientID = ID_textbox.Text;
                 string firstName = FirstName_textbox.Text;
                 string lastName = LastName_textbox.Text;
                 string phoneNumber = Phone_textbox.Text;
                 string email = Email_textbox.Text;
                 string address = Address_textbox.Text;
-        
+                //submit to the database
                 MySQLConnector database = new MySQLConnector();
                 database.InsertIntoDatabase(clientID, firstName, lastName, phoneNumber, email, address);
 
