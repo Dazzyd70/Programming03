@@ -156,24 +156,11 @@ namespace group_project
                         "VALUES (@clientID, @FirstName, @LastName, @PhoneNumber, @Email, @Address)";
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                        if (Int32.TryParse(clientID, out int clientIDInt))
-                        {
-                            cmd.Parameters.AddWithValue("@ClientID", clientIDInt);
-                        }
-                        try
-                        {
-                            MailAddress emailInput = new MailAddress(email);
-                            cmd.Parameters.AddWithValue("@Email", email);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Invalid email address format. Please try again.");
-                        }
-
-
+                        cmd.Parameters.AddWithValue("@ClientID", clientID); 
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                         cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Address", address);
                         
                         try
@@ -291,11 +278,68 @@ namespace group_project
             {
                 //store all entered data as strings
                 string clientID = ID_textbox.Text;
+                try
+                {
+                    Int32.Parse(clientID);
+                }
+                catch 
+                {
+                    MessageBox.Show("ID must be a number. Please try again.");
+                    ID_textbox.Text = "";
+                    return;
+                }
+
                 string firstName = FirstName_textbox.Text;
                 string lastName = LastName_textbox.Text;
+                bool firstNameValid = firstName.All(char.IsLetter);
+                bool lastNameValid = lastName.All(char.IsLetter);
+                if (!firstNameValid || !lastNameValid)
+                {
+                    if (!firstNameValid) 
+                    {
+                        MessageBox.Show("First name should only contain letters. Please try again.");
+                        FirstName_textbox.Text = "";
+                        return;
+                    }
+                    if (!lastNameValid)
+                    {
+                        MessageBox.Show("Last name should only contain letters. Please try again.");
+                        LastName_textbox.Text = "";
+                        return;
+                    }
+                }
+
                 string phoneNumber = Phone_textbox.Text;
+                bool hasOnlyDigits = phoneNumber.All(char.IsDigit);
+                bool isValidLength = phoneNumber.Length == 11;
+                if(!hasOnlyDigits || !isValidLength)
+                {
+                    MessageBox.Show("Invalid phone number. Please try again.");
+                    Phone_textbox.Text = "";
+                    return;
+                }
+
                 string email = Email_textbox.Text;
+                try
+                {
+                    MailAddress emailInput = new MailAddress(email);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Invalid email address format. Please try again.");
+                    Email_textbox.Text = "";
+                    return;
+                }
+
                 string address = Address_textbox.Text;
+                bool isValidAddress = address.All(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '.' || c == ',' || c == '-');
+                if (!isValidAddress)
+                {
+                    MessageBox.Show("Address contains invalid characters. Please try again.");
+                    Address_textbox.Text = "";
+                    return;
+                }
+
 
                 //submit to the database
                 MySQLConnector database = new MySQLConnector();
