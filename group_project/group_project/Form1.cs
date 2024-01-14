@@ -155,20 +155,18 @@ namespace group_project
                         "VALUES (@clientID, @FirstName, @LastName, @PhoneNumber, @Email, @Address)";
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                        if (int.TryParse(clientID, out int clientIDInt))
+                        if (Int32.TryParse(clientID, out int clientIDInt))
                         {
                             cmd.Parameters.AddWithValue("@ClientID", clientIDInt);
                         }
-                        if (int.TryParse(phoneNumber, out int phoneNumberInt))
-                        {
-                            cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumberInt);
-                        }
+                        
 
+                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                         cmd.Parameters.AddWithValue("@LastName", lastName);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Address", address);
-
+                        
                         try
                         {
                             cmd.ExecuteNonQuery();
@@ -300,6 +298,12 @@ namespace group_project
         }
         private void printSearch_Click(object sender, EventArgs e)
         {
+            int parsedVal;
+            if (!int.TryParse(clientSearch.Text, out parsedVal))
+            {
+                MessageBox.Show("This is a number only field. Please try again.");
+                return;
+            }
             if (clientSearch.Text != "")
             {
                 string search = clientSearch.Text;
