@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
+using System.Net.Mail;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -159,12 +160,20 @@ namespace group_project
                         {
                             cmd.Parameters.AddWithValue("@ClientID", clientIDInt);
                         }
-                        
+                        try
+                        {
+                            MailAddress emailInput = new MailAddress(email);
+                            cmd.Parameters.AddWithValue("@Email", email);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Invalid email address format. Please try again.");
+                        }
+
 
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
                         cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Address", address);
                         
                         try
@@ -287,10 +296,12 @@ namespace group_project
                 string phoneNumber = Phone_textbox.Text;
                 string email = Email_textbox.Text;
                 string address = Address_textbox.Text;
+
                 //submit to the database
                 MySQLConnector database = new MySQLConnector();
                 database.InsertIntoDatabase(clientID, firstName, lastName, phoneNumber, email, address);
-
+                //empty all text-boxes
+                ID_textbox.Text = FirstName_textbox.Text = LastName_textbox.Text = Phone_textbox.Text = Email_textbox.Text = Address_textbox.Text = "";
                 Result_Output_label.Text = "Success!";
             }
             else
