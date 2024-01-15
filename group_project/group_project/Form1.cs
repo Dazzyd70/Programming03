@@ -63,22 +63,32 @@ namespace group_project
 
             public bool OpenConnection()
             {
+
                 try
                 {
+                    // Check if the connection is open
                     if (connection?.State != System.Data.ConnectionState.Open)
                     {
+                        // If not open, try to open the connection
                         connection?.Open();
+
+                        // Connection successfully opened
                         return true;
                     }
                     else
                     {
-                        throw new Exception("summats fucked");
+                        // If the connection is already open, throw an exception
+                        throw new Exception("Connection is already open.");
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    // Handle the exception (e.g., log it or display an error message)
+                    // Exception handling for MySQL-specific exceptions
+
+                    // Log the error message to the console
                     Console.WriteLine($"Error: {ex.Message}");
+
+                    // Indicate that the operation was not successful
                     return false;
                 }
             }
@@ -86,28 +96,36 @@ namespace group_project
             {
                 try
                 {
-                    if (connection != null && connection.State !=
-                    System.Data.ConnectionState.Closed)
+                    // Check if a connection is open
+                    if (connection != null && connection.State != System.Data.ConnectionState.Closed)
                     {
+                        // close the connection
                         connection.Close();
                     }
+
+                    // Return true if no connection
                     return true;
                 }
                 catch (MySqlException ex)
                 {
+
                     Console.WriteLine($"Error: {ex.Message}");
+
                     return false;
                 }
                 finally
                 {
-                    connection?.Dispose(); // Dispose of the connection if it’s not null
+                    // kill connection regardless of exception
+                    connection?.Dispose();
                 }
             }
-            public DataTable ExecuteQuery(string query, MySqlParameter[] parameters = null)
-            {
+
+                
+                public DataTable ExecuteQuery(string query, MySqlParameter[] parameters = null)
+            {   //creates a table to store output
                 DataTable dataTable = new DataTable();
                 if (OpenConnection())
-                {
+                {//opens a connection and creates a new MySqlCommand object with the provided SQL query
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         if (parameters != null)
@@ -115,21 +133,23 @@ namespace group_project
                             cmd.Parameters.AddRange(parameters);
                         }
                         try
-                        {
+                        {   //populates the table with fetched data
                             using (MySqlDataReader reader = cmd.ExecuteReader())
                             {
                                 dataTable.Load(reader);
                             }
                         }
+                        //display any exceptions
                         catch (MySqlException ex)
                         {
                             MessageBox.Show($"Error: {ex.Message}");
                         }
-                    }
+                    }//terminate connection
                     CloseConnection();
-                }
+                }//passes the data table back
                 return dataTable;
             }
+            //similar to above, provides functionality for executing nonQuery queries. Insert etc
             public void ExecuteNonQuery(string query)
             {
                 if (OpenConnection())
@@ -148,6 +168,7 @@ namespace group_project
                     CloseConnection();
                 }
             }
+            //function for inserting all data from the form into the database
             public void InsertIntoDatabase(string clientID, string firstName, string lastName, string phoneNumber, string email, string address,
                bool softwareCheck, bool hardwareCheck, bool gamesCheck, bool officeCheck, bool accessoriesCheck)
             {
@@ -169,7 +190,7 @@ namespace group_project
                         cmd.Parameters.AddWithValue("@OfficeTools", officeCheck);
                         cmd.Parameters.AddWithValue("@Accessories", accessoriesCheck);
 
-                        
+                        //error handling in case anything goes wrong while submitting the data
                         try
                         {
                             cmd.ExecuteNonQuery();
@@ -333,6 +354,7 @@ namespace group_project
                 string email = Email_textbox.Text;
                 try
                 {
+                    //uses system.net.mail to verify the email is in a valid format
                     MailAddress emailInput = new MailAddress(email);
                 }
                 catch (FormatException)
@@ -343,7 +365,8 @@ namespace group_project
                 }
 
                 string address = Address_textbox.Text;
-                bool isValidAddress = address.All(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '.' || c == ',' || c == '-');
+                //verifies that addresses only contain alphanumeric characters, whitespaces, full stops or hyphens
+                bool isValidAddress = address.All(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '.' || c == '-');
                 if (!isValidAddress)
                 {
                     MessageBox.Show("Address contains invalid characters. Please try again.");
